@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS + JS var</title>
+    <style>
+        :root {
+            --base: #ffc600;
+            --blur: 10px;
+            --spacing: 10px;
+        }
+
+        html {
+            background-color: cornflowerblue;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 5rem;
+
+        }
+
+        img {
+            display: block;
+            margin: auto;
+            filter: blur(var(--blur));
+            background-color: var(--base);
+            padding: var(--spacing);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Update CSS Variables with JS</h1>
+    <div class="container">
+        <label>Spacing :</label>
+        <input type="range" name="spacing" min="0" max="100" data-sizing="px">
+        <label>Blur :</label>
+        <input type='range' name="blur" min="0" max="10" data-sizing="px" >
+        <input type="color" name="base">
+
+    </div>
+
+    <img src='the-road-815297_640.jpg' alt="">
+
+
+    <script>
+let inputs = document.querySelectorAll("input");
+console.log(inputs);
+function handleupdate(){
+    let suffix = this.dataset.sizing || "";
+ document.documentElement.style.setProperty(`--${this.name}`, this.value+ suffix)
+}
+inputs.forEach(input => {
+ input.addEventListener("change" , handleupdate)   
+});
+
+    </script>
+</body>
+
+</html>
